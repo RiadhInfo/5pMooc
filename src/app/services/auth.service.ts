@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers, RequestOptions } from '@angular/http';
 import 'rxjs/add/operator/map';
-// import { tokenNotExpired } from 'angular2-jwt';
+ import { tokenNotExpired } from 'angular2-jwt';
 import { environment } from '../../environments/environment';
 
 @Injectable()
 export class AuthService {
 
   // domain = ""; // Production
-  domain = environment.domain;
+  // domain = environment.domain;
   authToken;
   user;
   options;
@@ -36,22 +36,23 @@ export class AuthService {
 
   // Function to register user accounts
   registerUser(user) {
-    return this.http.post(this.domain + 'authentication/register', user).map(res => res.json());
+    return this.http.post('http://localhost:3000/authentication/register', user).map(res => res.json());
   }
 
   // Function to check if username is taken
   checkUsername(username) {
-    return this.http.get(this.domain + 'authentication/checkUsername/' + username).map(res => res.json());
+    return this.http.get('http://localhost:3000/authentication/checkUsername/' + username).map(res => res.json());
   }
 
   // Function to check if e-mail is taken
   checkEmail(email) {
-    return this.http.get(this.domain + 'authentication/checkEmail/' + email).map(res => res.json());
+    return this.http.get('http://localhost:3000/authentication/checkEmail/' + email).map(res => res.json());
   }
+
 
   // Function to login user
   login(user) {
-    return this.http.post(this.domain + 'authentication/login', user).map(res => res.json());
+    return this.http.post('http://localhost:3000/authentication/login', user).map(res => res.json());
   }
 
   // Function to logout
@@ -72,18 +73,18 @@ export class AuthService {
   // Function to get user's profile data
   getProfile() {
     this.createAuthenticationHeaders(); // Create headers before sending to API
-    return this.http.get(this.domain + 'authentication/profile', this.options).map(res => res.json());
+    return this.http.get('http://localhost:3000/authentication/profile', this.options).map(res => res.json());
   }
 
   // Function to get public profile data
   getPublicProfile(username) {
     this.createAuthenticationHeaders(); // Create headers before sending to API
-    return this.http.get(this.domain + 'authentication/publicProfile/' + username, this.options).map(res => res.json());
+    return this.http.get('http://localhost:3000/authentication/publicProfile/' + username, this.options).map(res => res.json());
   }
 
   // Function to check if user is logged in
   loggedIn() {
-   // return tokenNotExpired();
+    return tokenNotExpired();
   }
 
 }

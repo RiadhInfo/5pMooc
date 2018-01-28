@@ -2,9 +2,11 @@ const express = require('express');
 const MongoClient = require('mongodb').MongoClient;
 const ObjectID = require('mongodb').ObjectID;
 const router = express.Router();
-var cors = require('cors');
+const cors = require('cors');
 
-router.use(cors())
+
+
+router.use(cors());
 
 
 const connection = (closure) => {
@@ -15,6 +17,7 @@ const connection = (closure) => {
     })
 }
 
+
 router.get('/cours/listcours', (req, res)=>{
     connection((db) => {
         db.collection('cours')
@@ -22,7 +25,7 @@ router.get('/cours/listcours', (req, res)=>{
             .toArray(function(err, data){
                 if (err) throw err;
                 res.json(data);
-            });    
+            });
     });
 });
 
@@ -33,7 +36,7 @@ router.get('/cours/listcours/:id', (req, res) => {
             console.log(result);
            res.json(result);
            console.log(req.params.id)
-        
+
         })
     })
 });
@@ -47,5 +50,8 @@ router.get('/cours/categorie/:name', (req, res) => {
         });
     });
  });
+
+
+
 
 module.exports = router;

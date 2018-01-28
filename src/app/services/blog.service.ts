@@ -6,7 +6,7 @@ import { Http, Headers, RequestOptions } from '@angular/http';
 export class BlogService {
 
   options;
-  domain = this.authService.domain;
+  domain; // = this.authService.domain;
 
   constructor(
     private authService: AuthService,

@@ -9,6 +9,7 @@ const app = express();
 
 // API file for interacting with MongoDB
 const api = require('./server/routing/api');
+const auth = require('./server/routing/authentication');
 // this is a comment
 // Parsers
 app.use(bodyParser.json());
@@ -19,6 +20,7 @@ app.use(express.static(path.join(__dirname, 'dist')));
 
 // API location
 app.use('/api', api);
+app.use('/authentication',auth);
 
 
 // Send all other requests to the Angular app

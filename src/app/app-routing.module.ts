@@ -6,13 +6,19 @@ import { AuthGuard } from './guards/auth.guard';
 import { NotAuthGuard } from './guards/notAuth.guard';
 import { CourComponent } from './components/cour/cour.component';
 import { CourDetailComponent } from './components/cour-detail/cour-detail.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 // Our Array of Angular 2 Routes
 const appRoutes: Routes = [
   {
     path: '',
-    //component: HomeComponent // Default Route
-    component: CourComponent
+    component: CourComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'dashboard',
+    component: DashboardComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'register',
@@ -27,7 +33,7 @@ const appRoutes: Routes = [
   {
     path: 'cour/:id',
     component: CourDetailComponent, // Public Profile Route
-    //canActivate: [AuthGuard] // User must be logged in to view this route
+    canActivate: [AuthGuard] // User must be logged in to view this route
   },
   { path: '**', component: CourComponent } // "Catch-All" Route
 ];

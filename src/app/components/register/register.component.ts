@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
+import * as EmailValidator from 'email-validator';
+
+
 
 @Component({
   selector: 'app-register',
@@ -10,7 +13,7 @@ import { Router } from '@angular/router';
 })
 export class RegisterComponent implements OnInit {
 
-  form;
+  form: FormGroup;
   message;
   messageClass;
   processing = false;
@@ -74,13 +77,12 @@ export class RegisterComponent implements OnInit {
 
   // Function to validate e-mail is proper format
   validateEmail(controls) {
-    // Create a regular expression
-    const regExp = new RegExp(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
-    // Test email against regular expression
-    if (regExp.test(controls.value)) {
+
+     if (EmailValidator.validate(controls.value)) {
       return null; // Return as valid email
     } else {
-      return { 'validateEmail': true } // Return as invalid email
+
+      return { 'validateEmail': true }; // Return as invalid email
     }
   }
 
@@ -92,7 +94,7 @@ export class RegisterComponent implements OnInit {
     if (regExp.test(controls.value)) {
       return null; // Return as valid username
     } else {
-      return { 'validateUsername': true } // Return as invalid username
+      return { 'validateUsername': true }; // Return as invalid username
     }
   }
 
@@ -104,7 +106,7 @@ export class RegisterComponent implements OnInit {
     if (regExp.test(controls.value)) {
       return null; // Return as valid password
     } else {
-      return { 'validatePassword': true } // Return as invalid password
+      return { 'validatePassword': true }; // Return as invalid password
     }
   }
 
@@ -115,9 +117,9 @@ export class RegisterComponent implements OnInit {
       if (group.controls[password].value === group.controls[confirm].value) {
         return null; // Return as a match
       } else {
-        return { 'matchingPasswords': true } // Return as error: do not match
+        return { 'matchingPasswords': true }; // Return as error: do not match
       }
-    }
+    };
   }
 
   // Function to submit form
@@ -129,7 +131,7 @@ export class RegisterComponent implements OnInit {
       email: this.form.get('email').value, // E-mail input field
       username: this.form.get('username').value, // Username input field
       password: this.form.get('password').value // Password input field
-    }
+    };
 
     // Function from authentication service to register user
     this.authService.registerUser(user).subscribe(data => {

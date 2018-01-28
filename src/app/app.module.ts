@@ -1,4 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MatButtonModule, MatCheckboxModule} from '@angular/material';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -13,11 +15,14 @@ import { CourService } from './services/cour.service';
 
 import { LoginComponent } from './components/login/login.component';
 // import { FlashMessagesModule } from 'angular2-flash-messages';
+import {FlashMessageModule} from 'angular-flash-message';
+
 import { AuthGuard } from './guards/auth.guard';
 import { NotAuthGuard } from './guards/notAuth.guard';
 import { CourComponent } from './components/cour/cour.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { CourDetailComponent } from './components/cour-detail/cour-detail.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 
 @NgModule({
@@ -27,7 +32,8 @@ import { CourDetailComponent } from './components/cour-detail/cour-detail.compon
     RegisterComponent,
     LoginComponent,
     CourComponent,
-    CourDetailComponent
+    CourDetailComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
@@ -36,7 +42,10 @@ import { CourDetailComponent } from './components/cour-detail/cour-detail.compon
     FormsModule,
     AppRoutingModule,
     // FlashMessagesModule,
-    NgxPaginationModule
+    FlashMessageModule,
+    NgxPaginationModule,
+    BrowserAnimationsModule,
+    MatButtonModule, MatCheckboxModule
   ],
   providers: [AuthService, AuthGuard, NotAuthGuard, BlogService, CourService],
   bootstrap: [AppComponent]

@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
-// import { FlashMessagesService } from 'angular2-flash-messages';
+ // import { FlashMessagesService } from 'angular-flash-messages';
+//  import {FlashMessage} from 'angular-flash-message';
 
 @Component({
   selector: 'app-navbar',
@@ -13,13 +14,14 @@ export class NavbarComponent implements OnInit {
   constructor(
     public authService: AuthService,
     private router: Router,
-    // private flashMessagesService: FlashMessagesService
+  //  private flashMessage: FlashMessage
   ) { }
 
   // Function to logout user
   onLogoutClick() {
     this.authService.logout(); // Logout user
-   // this.flashMessagesService.show('You are logged out', { cssClass: 'alert-info' }); // Set custom flash message
+
+
     this.router.navigate(['/']); // Navigate back to home page
   }
 
