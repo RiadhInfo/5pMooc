@@ -18,7 +18,6 @@ const appRoutes: Routes = [
   {
     path: 'cours',
     component: CourComponent,
-    canActivate: [AuthGuard]
   },
   {
     path: 'dashboard',
