@@ -15,7 +15,7 @@
       <div class="row">
     <div *ngFor="let item of cours | paginate: { itemsPerPage:6,currentPage:p } " class="col-sm-4">
     <div  class="card" style="width: 90%;">
-      <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20%282%29.jpg" alt="Card image cap">
+      <img class="card-img-top" src="{{item.imageCourseLink}}" alt="Card image cap">
       <div class="card-body">
         <a routerLink="/cour/{{item._id}}"><h5 class="card-title">{{item.title}}</h5></a>
         <p class="card-text">{{item.author}}</p>

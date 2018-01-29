@@ -51,6 +51,26 @@ router.get('/cours/categorie/:name', (req, res) => {
     });
  });
 
+ router.get('/comment/:id', (req, res) => {
+console.log('ena api');
+  connection(function (db) {
+
+      db.collection('cours').findOne(
+          { "_id": ObjectID(req.params.id)}, function (err, result) {
+          if (err) throw err;
+          var commentaires = result.comments;
+
+          let resuContent = {};
+          commentaires.forEach(function (com) {
+              var contents = com.content;
+              resuContent["commentaire"] = contents;
+
+          });
+          console.log(resuContent);
+          res.json(resuContent);
+      })
+  })
+})
 
 
 
