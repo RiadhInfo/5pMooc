@@ -23,4 +23,10 @@ getAllCours() {
 
   }
 
+  getCoursByCategorie(name) {
+    console.log('ena tawa service');
+    return this._http.get('http://localhost:3000/api/categories/' + name)
+    .map(result => result.json());
+   }
+
 }

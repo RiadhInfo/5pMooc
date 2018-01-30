@@ -72,6 +72,17 @@ console.log('ena api');
   })
 })
 
+router.get('/categories/:name', (req, res) => {
+  console.log('ena tawa api');
+  connection((db) => {
+      db.collection('cours').find({ "categories":  { $elemMatch: { "name": req.params.name} }}).toArray(function (err, data) {
+          if (err) throw err;
+          //console.log(data);
+          res.json(data);
+      });
+  });
+});
+
 
 
 module.exports = router;

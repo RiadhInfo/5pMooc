@@ -20,8 +20,9 @@ export class CourComponent implements OnInit {
   message;
   cours;
   collection = [];
+  p;
 
-  constructor(private courService: CourService, private authService: AuthService,
+  constructor(private courService: CourService, public authService: AuthService,
     private route: ActivatedRoute, private location: Location) {
      /*for (let i = 1 ; i <= 100 ; i++) {
         this.collection.push('Angular ' + i + '.0 ' )

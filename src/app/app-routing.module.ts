@@ -7,6 +7,7 @@ import { NotAuthGuard } from './guards/notAuth.guard';
 import { CourComponent } from './components/cour/cour.component';
 import { CourDetailComponent } from './components/cour-detail/cour-detail.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { CategoriesComponent } from './components/categories/categories.component';
 
 // Our Array of Angular 2 Routes
 const appRoutes: Routes = [
@@ -14,6 +15,10 @@ const appRoutes: Routes = [
     path: '',
     component: CourComponent,
     canActivate: [AuthGuard]
+  },
+  { path: 'categories/:name',
+   component: CategoriesComponent,
+   canActivate: [AuthGuard]
   },
   {
     path: 'cours',

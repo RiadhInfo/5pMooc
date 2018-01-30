@@ -14,15 +14,13 @@ import { BlogService } from './services/blog.service';
 import { CourService } from './services/cour.service';
 
 import { LoginComponent } from './components/login/login.component';
-// import { FlashMessagesModule } from 'angular2-flash-messages';
-import {FlashMessageModule} from 'angular-flash-message';
-
 import { AuthGuard } from './guards/auth.guard';
 import { NotAuthGuard } from './guards/notAuth.guard';
 import { CourComponent } from './components/cour/cour.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { CourDetailComponent } from './components/cour-detail/cour-detail.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { CategoriesComponent } from './components/categories/categories.component';
 
 
 @NgModule({
@@ -33,7 +31,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     LoginComponent,
     CourComponent,
     CourDetailComponent,
-    DashboardComponent
+    DashboardComponent,
+    CategoriesComponent
   ],
   imports: [
     BrowserModule,
@@ -41,8 +40,6 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     ReactiveFormsModule,
     FormsModule,
     AppRoutingModule,
-    // FlashMessagesModule,
-    FlashMessageModule,
     NgxPaginationModule,
     BrowserAnimationsModule,
     MatButtonModule, MatCheckboxModule

@@ -11,7 +11,13 @@
         </div>
       </div>
 
+
+      <div style = "text-align: center;margin:20px">
+
+          <pagination-controls (pageChange)="p =$event"></pagination-controls>
+      </div>
       <div class="row">
+
 
     <div *ngFor="let item of cours | paginate: { itemsPerPage:6,currentPage:p } " class="global col-sm-4">
     <div  class="card" style="width: 90%;">
@@ -26,9 +32,6 @@
 
 </div>
 
-<div style = "text-align: center;margin:20px">
 
-    <pagination-controls (pageChange)="p =$event"></pagination-controls>
-</div>
 
 
